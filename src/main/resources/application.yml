@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo
+
+
+  ai:
+    openai:
+      api-key: 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
+      chat:
+        options:
+          model: gpt-3.5-turbo
