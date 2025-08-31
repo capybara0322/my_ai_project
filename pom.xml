@@ -71,6 +71,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!--阿里云AI -->
+        <dependency>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
+            <version>1.0.0.3</version>
+        </dependency>
+
         <!-- ⚠️ 移除老坐标：org.springframework.ai:spring-ai-openai-spring-boot-starter -->
     </dependencies>
 

@@ -1,34 +1,35 @@
 package com.example.ai.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.Message;
+import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/try")
 public class TryController {
 
-    private final ChatClient chatClient;
-
     @Autowired
-    public TryController(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    private ChatClient chatClient;
+
+    @GetMapping("/chat")
+    public String chat(@RequestParam String prompt) {
+        return chatClient
+                .prompt()
+                .user(prompt)
+                .call()
+                .content();
     }
 
-    @PostMapping("/ask")
-    public String askQuestion(@RequestBody String question) {
-        Prompt prompt = new Prompt(new UserMessage(question));
-        ChatResponse response = chatClient.call(prompt);
-        return response.getResult().getOutput().getContent();
-    }
 
-    @GetMapping("/ask")
-    public String askQuestion2(@RequestParam String question) {
-        Prompt prompt = new Prompt(new UserMessage(question));
-        ChatResponse response = chatClient.call(prompt);
-        return response.getResult().getOutput().getContent();
-    }
 
 }
