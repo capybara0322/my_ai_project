@@ -7,9 +7,11 @@ import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,15 @@ public class TryController {
                 .call()
                 .content();
     }
+
+
+    @GetMapping(value = "/test-sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> testSse() {
+        return Flux.interval(Duration.ofSeconds(1))
+                .take(5)
+                .map(i -> "event: message\n" + "data: " + "{\"count\":" + i + "}\n\n");
+    }
+
 
 
 

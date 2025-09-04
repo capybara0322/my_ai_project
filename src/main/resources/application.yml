@@ -44,7 +44,14 @@ spring:
 server:
   port: 8080
 
+auth:
+  interceptor:
+    enabled: true
 
+
+logging:
+  level:
+    org.springframework.security: DEBUG
 
 # JWT配置
 jwt:
