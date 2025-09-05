@@ -1,5 +1,7 @@
 package com.example.ai.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
@@ -20,6 +22,8 @@ import java.util.Map;
 @RequestMapping("/try")
 public class TryController {
 
+    private static final Logger logger = LoggerFactory.getLogger(TryController.class);
+
     @Autowired
     private ChatClient chatClient;
 
@@ -35,6 +39,7 @@ public class TryController {
 
     @GetMapping(value = "/test-sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> testSse() {
+        logger.info("testSse");
         return Flux.interval(Duration.ofSeconds(1))
                 .take(5)
                 .map(i -> "event: message\n" + "data: " + "{\"count\":" + i + "}\n\n");

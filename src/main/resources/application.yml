@@ -1,6 +1,9 @@
 spring:
   application:
     name: demo
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 
   datasource:
     url: jdbc:mysql://localhost:3306/ai_project
@@ -13,14 +16,13 @@ spring:
       port: 6379
       database: 0
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-        format_sql: true
+  # MyBatis配置
+  mybatis:
+    mapper-locations: classpath*:mapper/*.xml
+    type-aliases-package: com.example.ai.entity
+    configuration:
+      map-underscore-to-camel-case: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
   ai:
     dashscope:

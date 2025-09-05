@@ -67,10 +67,11 @@
             <scope>runtime</scope>
         </dependency>
         
-        <!-- JPA 和数据库相关 -->
+        <!-- MyBatis 和数据库相关 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
         
         <!-- JWT 相关依赖 -->
@@ -103,12 +104,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!--mybatis-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-        </dependency>
         <!-- Redis（Lettuce） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -133,12 +128,40 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <!-- H2数据库用于测试 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <!--阿里云AI -->
         <dependency>
             <groupId>com.alibaba.cloud.ai</groupId>
             <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
             <version>1.0.0.3</version>
+        </dependency>
+
+
+        <!-- SLF4J API -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.17</version>
+        </dependency>
+
+        <!-- Logback 实现 (SLF4J的默认实现) -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.5.18</version>  <!-- 或其他适合的版本 -->
         </dependency>
 
         <!-- ⚠️ 移除老坐标：org.springframework.ai:spring-ai-openai-spring-boot-starter -->
