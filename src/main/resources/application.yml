@@ -30,7 +30,7 @@ spring:
       chat:
         options:
           model: qwen-turbo            # 也可用 qwen-turbo / qwen-long 等
-          max-tokens: 1024
+          max-tokens: 4096
 
     openai:
       enable: false
