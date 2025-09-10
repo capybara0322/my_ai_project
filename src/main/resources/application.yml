@@ -26,7 +26,7 @@ spring:
 
   ai:
     dashscope:
-      api-key: sk-a7db25916f734fb180b6a0dec7d7eb60   # 建议用环境变量
+      api-key:    # 建议用环境变量
       chat:
         options:
           model: qwen-turbo            # 也可用 qwen-turbo / qwen-long 等
@@ -34,7 +34,7 @@ spring:
 
     openai:
       enable: false
-      api-key: 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
+      api-key: 
       chat:
         options:
           model: gpt-3.5-turbo
